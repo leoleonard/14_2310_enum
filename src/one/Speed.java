@@ -2,15 +2,23 @@ package one;
 
 public enum Speed {
 
-    SLOW(30), MEDIUM(50), FAST(150);
+    SLOW("Powoli", 30), MEDIUM("Normalnie", 50), FAST("Szybko", 150);
 
     private int kmh;
+    private String translation;
 
-    Speed(int kmh) {
+    Speed(String translation, int kmh) {
+        this.translation = translation;
         this.kmh = kmh;
     }
 
     public int getKmh() {
         return kmh;
     }
+
+    public String getTranslation() {
+        return translation;
+    }
+
+
 }

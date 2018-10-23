@@ -12,10 +12,23 @@ public class SpeedTest2 {
 
         System.out.println("Podaj wartość");
         Scanner scanner = new Scanner(System.in);
-
         String line = scanner.nextLine();
-        Speed speed = Speed.valueOf(line);
+        String lineUppercase = line.toUpperCase();
 
-        System.out.println("Wartość to " + speed + ", prędkość " + speed.getKmh() + "km/h");
+        Speed choosenSpeed = null;
+        try {
+            choosenSpeed = Speed.valueOf(lineUppercase);
+        } catch (IllegalArgumentException e) {
+            for (Speed speed : values) {
+                if (speed.getTranslation().equalsIgnoreCase(line)) {
+                    choosenSpeed = speed;
+                }
+            }
+        }
+        if (choosenSpeed != null) {
+            System.out.println("Wartość to " + choosenSpeed + ", prędkość " + choosenSpeed.getKmh() + "km/h");
+        } else {
+            System.out.println("Nie znaleziono");
+        }
     }
 }
